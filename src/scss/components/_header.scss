@@ -1,0 +1,236 @@
+@import '../global/config', '../global/easing', '../global/typography';
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  padding: 50px 0;
+  z-index: 100;
+
+  .section--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  svg {
+    fill: $cod-gray;
+    transition: fill 300ms;
+
+    .ampersand {
+      fill: $alizarin-crimson;
+      transition: fill 300ms;
+    }
+  }
+
+  a {
+    color: $cod-gray;
+    transition: color 300ms;
+
+    &:after {
+      background-color: $tulip-tree;
+      transition: background-color 200ms;
+    }
+  }
+
+  &__logo {
+    opacity: 0;
+    visibility: hidden;
+    width: 113px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 5;
+    transition: opacity 600ms $easeInQuad;
+    will-change: opacity;
+    transform: translateZ(0);
+
+    a {
+      display: block;
+    }
+  }
+
+  &__nav {
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 600ms $easeInQuad;
+    will-change: opacity;
+    transform: translateZ(0);
+
+    ul {
+      display: flex;
+
+      li {
+        margin: 0 25px;
+        font-size: 14px;
+        @extend %GothamMedium;
+
+        a {
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            width: 0;
+            height: 50%;
+            z-index: -1;
+            transform: translate3d(-50%, 0, 0);
+            transition-property: width;
+            transition-duration: 300ms;
+            transition-timing-function: $easeInOutQuad;
+          }
+
+          &:active,
+          &:hover,
+          &.active {
+            &:after {
+              width: 150%;
+            }
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &__mobile {
+    &-trigger {
+      color: $cod-gray;
+      display: block;
+      font-size: 14px;
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+      padding: 6px 35px 6px 6px;
+      transform: translate3d(100%, 0, 0);
+      transition: transform 600ms $easeOutQuad 0s;
+      @extend %GothamMedium;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 20px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50px;
+        background-color: currentColor;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        transition: width 300ms $easeOutQuad;
+      }
+
+      > span {
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 20px;
+          width: 5px;
+          height: 5px;
+          border-radius: 50px;
+          background-color: currentColor;
+          transform: translate3d(0, 0, 0);
+          transition: transform 300ms, top 300ms, bottom 300ms;
+        }
+
+        &::before {
+          top: 0;
+        }
+
+        &::after {
+          bottom: 0;
+        }
+      }
+
+      &:hover {
+        > span {
+          &::before {
+            transform: translate3d(0, 2px, 0);
+          }
+
+          &::after {
+            transform: translate3d(0, -2px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  &--open,
+  &--inverted {
+    svg {
+      fill: $white;
+
+      .ampersand {
+        fill: $white;
+      }
+    }
+
+    a {
+      color: $white;
+
+      &:after {
+        background-color: $cod-gray;
+      }
+    }
+
+    .header__mobile-trigger {
+      color: $white;
+    }
+  }
+
+  &--open {
+    a {
+      &:after {
+        background-color: $tulip-tree;
+      }
+    }
+
+    .header__nav {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .header__mobile-trigger {
+      &::after {
+        width: 70px;
+        transition-delay: 350ms;
+      }
+
+      > span {
+        &::before,
+        &::after {
+          transition-delay: 250ms;
+        }
+
+        &::before {
+          top: 50%;
+          transform: translate3d(0, -50%, 0);
+        }
+
+        &::after {
+          bottom: 50%;
+          transform: translate3d(0, 50%, 0);
+        }
+      }
+    }
+  }
+
+  &--loaded {
+    .header__logo,
+    .header__nav {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import './_mixins.scss';
+
+%TiemposTextRegular {
+  @include font(400, $tiempostext);
+}
+%TiemposHeadlineBold {
+  @include font(700, $tiemposheadline);
+}
+%ApercuMono {
+  @include font(400, $apercu);
+}
+%GothamMedium {
+  @include font(500, $gotham);
+}
+%GothamBold {
+  @include font(700, $gotham);
+}
+%MontserratLight {
+  @include font(300, $montserrat);
+}
+%MontserratRegular {
+  @include font(400, $montserrat);
+}
+%MontserratSemiBold {
+  @include font(600, $montserrat);
+}
+%MontserratBold {
+  @include font(700, $montserrat);
+}
