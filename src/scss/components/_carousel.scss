@@ -157,28 +157,32 @@ $fifthSlideColor: #fff;
         transform: translateZ(0);
         @extend %TiemposHeadlineBold;
 
-        a {
-          display: inline-block;
-          color: inherit;
-          position: relative;
+        h1 {
+          display: inline;
 
-          &:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            right: 0;
-            width: 125%;
-            height: 25%;
-            z-index: -1;
-            background-color: $tulip-tree;
-            transform: translate3d(-50%, -25%, 0);
-            transition: width 250ms ease-in-out;
-          }
+          a {
+            display: inline-block;
+            color: inherit;
+            position: relative;
 
-          &:hover {
             &:after {
-              width: 110%;
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              right: 0;
+              width: 125%;
+              height: 25%;
+              z-index: -1;
+              background-color: $tulip-tree;
+              transform: translate3d(-50%, -25%, 0);
+              transition: width 250ms ease-in-out;
+            }
+
+            &:hover {
+              &:after {
+                width: 110%;
+              }
             }
           }
         }

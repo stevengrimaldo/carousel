@@ -1,6 +1,6 @@
+dist/
 *.DS_Store
 node_modules
 .cache/
 yarn-error.log
 src/old
-dist
