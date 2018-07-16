@@ -53,11 +53,13 @@ body {
 }
 html {
   box-sizing: border-box;
+  overflow: hidden;
 }
 body {
   font: inherit;
   line-height: 1;
   letter-spacing: 0;
+  overflow: auto;
 }
 h1,
 h2,

@@ -1,1 +1,6 @@
 export { default as header } from './_header'
+export { default as mouseIndicator } from './_mouseIndicator'
+export { default as setupTimelines } from './_setupTimelines'
+export { default as showNextSlide } from './_showNextSlide'
+export { default as showPrevSlide } from './_showPrevSlide'
+export { default as splitHeadlineText } from './_splitHeadlineText'

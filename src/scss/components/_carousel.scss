@@ -35,6 +35,7 @@ $fifthSlideColor: #fff;
     height: 100vh;
     color: $white;
     background-color: $white;
+    transform-style: preserve-3d;
   }
 
   &__slide {
@@ -144,7 +145,7 @@ $fifthSlideColor: #fff;
       transform: translate3d(-150px, 0, 0);
       z-index: 10;
       min-width: 600px;
-      max-width: 900px;
+      max-width: 1200px;
 
       &-title {
         font-size: 50px;
@@ -252,7 +253,7 @@ $fifthSlideColor: #fff;
     &:nth-child(3) {
       background-color: $thirdSlideBg;
       color: $thirdSlideColor;
-      fill: $thirdSlideColor;
+      fill: $thirdSlideBg;
       z-index: 3;
 
       .carousel__slide__video-mask {
@@ -263,7 +264,7 @@ $fifthSlideColor: #fff;
     &:nth-child(4) {
       background-color: $fourthSlideBg;
       color: $fourthSlideColor;
-      fill: $fourthSlideColor;
+      fill: $fourthSlideBg;
       z-index: 2;
 
       .carousel__slide__video-mask {
@@ -274,7 +275,7 @@ $fifthSlideColor: #fff;
     &:nth-child(5) {
       background-color: $fifthSlideBg;
       color: $fifthSlideColor;
-      fill: $fifthSlideColor;
+      fill: $fifthSlideBg;
       z-index: 1;
 
       .carousel__slide__video-mask {
