@@ -1,6 +1,6 @@
-import Hammer from 'hammerjs'
-import { TweenMax } from 'gsap'
 import VirtualScroll from 'virtual-scroll'
+import { TweenMax } from 'gsap'
+import Hammer from 'hammerjs'
 
 import {
   header,
@@ -227,10 +227,16 @@ const onScroll = e => {
 window.addEventListener(
   'load',
   () => {
+    // initiate the header functionality and intro animations
     header()
+
+    // fire the scroll indicator animation
     mouseIndicator()
+
+    // split all headline text so they can be animated
     splitHeadlineText()
 
+    // prepare the animation timelines
     slideTimelines = setupTimelines(slides)
 
     // prepare the last slide to fade in incase we go backwards
@@ -238,8 +244,10 @@ window.addEventListener(
     slideTimelines[currentSlide].animateIn.play()
     videoEl[currentSlide].play()
 
+    // initiate scrolling capabilities
     vs.on(onScroll)
 
+    // initiate dragging capabilities
     panManager.add(Pan)
     panManager.on('panstart', onPanStart)
     panManager.on('panstart panmove', onPanMove)

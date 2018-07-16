@@ -11,55 +11,54 @@ const resetAll = () => {
   TweenLite.set(navItems, { clearProps: 'all' })
 }
 
+const handleClick = () => {
+  // grab the active video when the menu is opened
+  const activeSlideVideo = document.querySelector(
+    '.carousel__slide--active .vid-el'
+  )
+
+  if (headerEl.classList.contains('header--open')) {
+    bodyEl.style.overflow = ''
+    headerEl.classList.remove('header--open')
+
+    if (activeSlideVideo) {
+      activeSlideVideo.play()
+    }
+
+    TweenLite.staggerTo(
+      navItems,
+      0.675,
+      {
+        autoAlpha: 0,
+        ease: snappy,
+        onComplete: resetAll,
+        x: -15,
+      },
+      0.05
+    )
+  } else {
+    bodyEl.style.overflow = 'hidden'
+    headerEl.classList.add('header--open')
+
+    if (activeSlideVideo) {
+      activeSlideVideo.pause()
+    }
+
+    TweenLite.staggerTo(
+      navItems,
+      0.675,
+      {
+        autoAlpha: 1,
+        delay: 0.5,
+        x: 0,
+      },
+      0.05
+    )
+  }
+}
+
 export default () => {
   headerEl.classList.add('header--loaded')
 
-  mobileTrigger.addEventListener(
-    'click',
-    () => {
-      const activeSlideVideo = document.querySelector(
-        '.carousel__slide--active video'
-      )
-
-      if (headerEl.classList.contains('header--open')) {
-        bodyEl.style.overflow = ''
-        headerEl.classList.remove('header--open')
-
-        if (activeSlideVideo) {
-          activeSlideVideo.play()
-        }
-
-        TweenLite.staggerTo(
-          navItems,
-          0.675,
-          {
-            autoAlpha: 0,
-            ease: snappy,
-            onComplete: resetAll,
-            x: -15,
-          },
-          0.05
-        )
-      } else {
-        bodyEl.style.overflow = 'hidden'
-        headerEl.classList.add('header--open')
-
-        if (activeSlideVideo) {
-          activeSlideVideo.pause()
-        }
-
-        TweenLite.staggerTo(
-          navItems,
-          0.675,
-          {
-            autoAlpha: 1,
-            delay: 0.5,
-            x: 0,
-          },
-          0.05
-        )
-      }
-    },
-    false
-  )
+  mobileTrigger.addEventListener('click', handleClick, false)
 }
