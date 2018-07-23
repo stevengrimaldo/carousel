@@ -1,22 +1,21 @@
-import { TweenLite } from 'gsap'
+import { TweenMax } from 'gsap'
 
 import { snappy } from '../easing'
+import { slides } from '../'
 
 const bodyEl = document.body
 const headerEl = document.querySelector('.header')
 const navItems = headerEl.querySelectorAll('.header__nav li')
-const mobileTrigger = headerEl.querySelector('.header__mobile-trigger')
 
 const resetAll = () => {
-  TweenLite.set(navItems, { clearProps: 'all' })
+  TweenMax.set(navItems, { clearProps: 'all' })
 }
 
-const handleClick = () => {
+export default currentSlide => {
   // grab the active video when the menu is opened
-  const activeSlideVideo = document.querySelector(
-    '.carousel__slide--active .vid-el'
-  )
+  const activeSlideVideo = slides[currentSlide].querySelector('.vid-el')
 
+  // if the menu is open we prepare to close it with some animations
   if (headerEl.classList.contains('header--open')) {
     bodyEl.style.overflow = ''
     headerEl.classList.remove('header--open')
@@ -25,7 +24,7 @@ const handleClick = () => {
       activeSlideVideo.play()
     }
 
-    TweenLite.staggerTo(
+    TweenMax.staggerTo(
       navItems,
       0.675,
       {
@@ -36,6 +35,7 @@ const handleClick = () => {
       },
       0.05
     )
+    // if the menu is closed we open it
   } else {
     bodyEl.style.overflow = 'hidden'
     headerEl.classList.add('header--open')
@@ -44,7 +44,7 @@ const handleClick = () => {
       activeSlideVideo.pause()
     }
 
-    TweenLite.staggerTo(
+    TweenMax.staggerTo(
       navItems,
       0.675,
       {
@@ -55,10 +55,4 @@ const handleClick = () => {
       0.05
     )
   }
-}
-
-export default () => {
-  headerEl.classList.add('header--loaded')
-
-  mobileTrigger.addEventListener('click', handleClick, false)
 }

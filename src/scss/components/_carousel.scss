@@ -192,7 +192,7 @@ $fifthSlideColor: #fff;
       &-copy {
         max-width: vw(775px);
         width: 100%;
-        padding-left: vw(175px);
+        padding-left: vw(150px);
 
         p {
           font-size: 16px;
@@ -370,6 +370,117 @@ $fifthSlideColor: #fff;
 
       &:hover {
         opacity: 0.15;
+      }
+    }
+  }
+
+  @include mq('min-width', 1920) {
+    &__slide {
+      &__content {
+        &-title {
+          font-size: 60px;
+        }
+      }
+    }
+  }
+
+  @include mq('max-width', $laptop) {
+    &__slide {
+      &__content {
+        &-title {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+
+  @include mq('max-width', 900) {
+    &__slide {
+      justify-content: flex-start;
+
+      &__video {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 50%;
+        transform: translate3d(-25%, -50%, 0);
+      }
+
+      &__content {
+        padding: 0 20px;
+        transform: translate3d(10vw, 0, 0);
+
+        &-copy {
+          padding-left: 0;
+        }
+      }
+    }
+
+    &__social {
+      display: none;
+    }
+
+    &__indicator {
+      display: none;
+    }
+
+    &__counter {
+      right: 20px;
+    }
+  }
+
+  @include mq('max-width', $phablet) {
+    .section--wrapper {
+      bottom: 20px;
+    }
+
+    &__slide {
+      &__video {
+        transform: translate3d(-50%, -50%, 0);
+      }
+
+      &__content {
+        min-width: unset;
+        flex-basis: 100%;
+        transform: none;
+
+        &-title {
+          margin-bottom: 35px;
+
+          a {
+            &:after {
+              width: 110%;
+            }
+          }
+        }
+
+        &-copy {
+          max-width: none;
+
+          .cta {
+            display: block;
+            margin-left: 0;
+            margin-bottom: 35px;
+
+            &--container {
+              margin-top: 35px;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include mq('max-width', $mobile) {
+    &__slide {
+      &__content {
+        &-title {
+          font-size: 30px;
+        }
       }
     }
   }
